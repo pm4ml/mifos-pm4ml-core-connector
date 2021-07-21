@@ -1,0 +1,24 @@
+
+local loanId = header.loanId;
+local phoneNumber =  header.accountNumber;
+local walletFsp =  header.bankNumber;
+local disbursedAmount = header.disbursedAmount;
+
+
+{
+"homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+"from": {
+"idType": "ACCOUNT_ID",
+"idValue": loanId,
+},
+"to": {
+"type": "CONSUMER",
+"idType": "MSISDN",
+"idValue": phoneNumber,
+"fspId": walletFsp
+},
+"amountType": "RECEIVE",
+"currency": "MMK",
+"amount": disbursedAmount,
+"transactionType": "TRANSFER"
+}

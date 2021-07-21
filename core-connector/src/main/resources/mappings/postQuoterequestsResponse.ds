@@ -1,0 +1,22 @@
+
+local year = payload.date[0];
+local month = payload.date[1];
+local day = payload.date[2];
+
+local extensionList = std.filter(function(item) item != null, [
+       {key: "dueDate", value: year+"-"+month+"-"+day}
+]);
+
+{
+"quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+"transactionId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+"transferAmount": std.toString(payload.amount),
+"transferAmountCurrency": "MMK",
+"payeeReceiveAmount": "100000",
+"payeeReceiveAmountCurrency": "MMK",
+"payeeFspCommissionAmount": "1000",
+"payeeFspCommissionAmountCurrency": "MMK",
+"expiration": "2019-11-15T22:17:28.985-01:00",
+ [if (extensionList != [null])
+   then "extensionList"]: extensionList
+}

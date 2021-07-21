@@ -1,0 +1,502 @@
+{
+	"info": {
+		"_postman_id": "88d7d1be-b253-4f15-86b5-e6f744d682e7",
+		"name": "Temp Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Mifos-LoanRepayment",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "mfi5password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mfi5Admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Fineract-Platform-TenantId",
+						"value": "mfi5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dateFormat\": \"dd MMMM yyyy\",\r\n    \"locale\": \"en\",\r\n    \"paymentTypeId\": 1,\r\n    \"transactionAmount\": 14700,\r\n    \"transactionDate\": \"20 March 2018\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev.thitsa.io/fineract-provider/api/v1/loans/487/transactions?command=repayment",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"thitsa",
+						"io"
+					],
+					"path": [
+						"fineract-provider",
+						"api",
+						"v1",
+						"loans",
+						"487",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "command",
+							"value": "repayment"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Mifos-LoanRepayment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Fineract-Platform-TenantId",
+								"value": "mfi5",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dateFormat\": \"dd MMMM yyyy\",\r\n    \"locale\": \"en\",\r\n    \"paymentTypeId\": 1,\r\n    \"transactionAmount\": 14700,\r\n    \"transactionDate\": \"20 March 2018\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dev.thitsa.io/fineract-provider/api/v1/loans/487/transactions?command=repayment",
+							"protocol": "https",
+							"host": [
+								"dev",
+								"thitsa",
+								"io"
+							],
+							"path": [
+								"fineract-provider",
+								"api",
+								"v1",
+								"loans",
+								"487",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "command",
+									"value": "repayment"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.20.0"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 31 May 2021 06:03:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Notification-Refresh",
+							"value": "false"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PUT, DELETE, OPTIONS"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-SSH-Endpoint",
+							"value": "dev.thitsa.io:50022"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"officeId\": 1,\n    \"clientId\": 128,\n    \"loanId\": 487,\n    \"resourceId\": 5032,\n    \"changes\": {\n        \"transactionDate\": \"20 March 2018\",\n        \"transactionAmount\": \"14700\",\n        \"locale\": \"en\",\n        \"dateFormat\": \"dd MMMM yyyy\",\n        \"paymentTypeId\": \"1\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Mifos-LookupLoan",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "mfi5password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mfi5Admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Fineract-Platform-TenantId",
+						"value": "mfi5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev.thitsa.io/fineract-provider/api/v1/loans/888",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"thitsa",
+						"io"
+					],
+					"path": [
+						"fineract-provider",
+						"api",
+						"v1",
+						"loans",
+						"888"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mifos-GetClient",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "mfi5password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mfi5Admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Fineract-Platform-TenantId",
+						"value": "mfi5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev.thitsa.io/fineract-provider/api/v1/clients/676",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"thitsa",
+						"io"
+					],
+					"path": [
+						"fineract-provider",
+						"api",
+						"v1",
+						"clients",
+						"676"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mifos-PaymentTypes",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "mfi5password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mfi5Admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Fineract-Platform-TenantId",
+						"value": "mfi5",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://dev.thitsa.io/fineract-provider/api/v1/paymenttypes",
+					"protocol": "https",
+					"host": [
+						"dev",
+						"thitsa",
+						"io"
+					],
+					"path": [
+						"fineract-provider",
+						"api",
+						"v1",
+						"paymenttypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CC-PostTransfer",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "mfi5password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mfi5Admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "fspiop-source-fspId",
+						"value": "Wave",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"transferId\": \"85feac2f-39b2-491b-817e-4a03203d4f14\",\r\n\"quote\": {\r\n\"quoteId\": \"7c23e80c-d078-4077-8263-2c047876fcf6\",\r\n\"transactionId\": \"85feac2f-39b2-491b-817e-4a03203d4f14\",\r\n\"transferAmount\": \"99000\",\r\n\"transferAmountCurrency\": \"MMK\",\r\n\"payeeReceiveAmount\": \"100000\",\r\n\"payeeReceiveAmountCurrency\": \"MMK\",\r\n\"payeeFspCommissionAmount\": \"1000\",\r\n\"payeeFspCommissionAmountCurrency\": \"MMK\",\r\n\"expiration\": \"2019-11-15T22:17:28.985-01:00\"\r\n},\r\n\"from\": {\r\n\"type\": \"CONSUMER\",\r\n\"idType\": \"MSISDN\",\r\n\"idValue\": \"123456789\",\r\n\"displayName\": \"Maung Pyae\",\r\n\"firstName\": \"Maung\",\r\n\"middleName\": \"Kan\",\r\n\"lastName\": \"Pyae\",\r\n\"dateOfBirth\": \"1977-07-17\"\r\n},\r\n\"to\": {\r\n\"idType\": \"ACCOUNT_ID\",\r\n\"idValue\": \"222888\",\r\n\"displayName\": \"MFI Abcd\"\r\n},\r\n\"amountType\": \"RECEIVE\",\r\n\"currency\": \"MMK\",\r\n\"amount\": \"10000\",\r\n\"transactionType\": \"TRANSFER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/transfers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CC-PostQuotes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"quoteId\": \"7c23e80c-d078-4077-8263-2c047876fcf6\",\r\n\"transactionId\": \"85feac2f-39b2-491b-817e-4a03203d4f14\",\r\n\"to\": {\r\n\"idType\": \"ACCOUNT_ID\",\r\n\"idValue\": \"222888\",\r\n\"displayName\": \"Some MFI\"\r\n},\r\n\"from\": {\r\n\"type\": \"CONSUMER\",\r\n\"idType\": \"MSISDN\",\r\n\"idValue\": \"123456789\",\r\n\"displayName\": \"Maung Pyae\",\r\n\"firstName\": \"Maung\",\r\n\"middleName\": \"Kan\",\r\n\"lastName\": \"Pyae\",\r\n\"dateOfBirth\": \"1977-07-17\"\r\n},\r\n\"amountType\": \"RECEIVE\",\r\n\"amount\": \"100000\",\r\n\"currency\": \"MMK\",\r\n\"transactionType\": \"TRANSFER\",\r\n\"initiator\": \"PAYER\",\r\n\"initiatorType\": \"CONSUMER\",\r\n\"expiration\": \"2019-11-15T22:17:28.985-01:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/quoterequests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"quoterequests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CC-GetParties",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "mfi5password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mfi5Admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:3003/parties/ACCOUNT_ID/222487",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"parties",
+						"ACCOUNT_ID",
+						"222487"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CC-PutTransfer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"transferId\":\"7b82aa89-3c77-4f19-b586-519522e0f839\",\r\n   \"direction\":\"INBOUND\",\r\n   \"quoteRequest\":{\r\n      \"headers\":{\r\n         \"content-type\":\"application/vnd.interoperability.quotes+json;version=1.0\",\r\n         \"date\":\"Tue, 15 Jun 2021 13:30:11 GMT\",\r\n         \"fspiop-source\":\"payerfsp\",\r\n         \"fspiop-destination\":\"payeefsp\",\r\n         \"authorization\":\"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22\",\r\n         \"accept\":\"application/vnd.interoperability.quotes+json;version=1\",\r\n         \"content-length\":685,\r\n         \"host\":\"payeefsp-mojaloop-connector:4000\",\r\n         \"connection\":\"close\"\r\n      },\r\n      \"body\":{\r\n         \"quoteId\":\"9b25eb78-cda9-4d1f-ad57-ab5fcacf08de\",\r\n         \"transactionId\":\"7b82aa89-3c77-4f19-b586-519522e0f839\",\r\n         \"amountType\":\"SEND\",\r\n         \"amount\":{\r\n            \"currency\":\"USD\",\r\n            \"amount\":\"10\"\r\n         },\r\n         \"expiration\":\"2021-06-15T13:31:11.456Z\",\r\n         \"payer\":{\r\n            \"partyIdInfo\":{\r\n               \"partyIdType\":\"ACCOUNT_ID\",\r\n               \"partyIdentifier\":\"17855501914\",\r\n               \"fspId\":\"payerfsp\"\r\n            },\r\n            \"name\":\"PayerFirst PayerLast\"\r\n         },\r\n         \"payee\":{\r\n            \"partyIdInfo\":{\r\n               \"partyIdType\":\"ACCOUNT_ID\",\r\n               \"partyIdentifier\":\"17039811907\",\r\n               \"fspId\":\"payeefsp\"\r\n            },\r\n            \"personalInfo\":{\r\n               \"complexName\":{\r\n                  \"firstName\":\"SimFirst\",\r\n                  \"middleName\":\"SimMiddle\",\r\n                  \"lastName\":\"SimLast\"\r\n               },\r\n               \"dateOfBirth\":\"2010-10-10\"\r\n            }\r\n         },\r\n         \"transactionType\":{\r\n            \"scenario\":\"TRANSFER\",\r\n            \"initiator\":\"PAYER\",\r\n            \"initiatorType\":\"CONSUMER\"\r\n         },\r\n         \"note\":\"test payment\"\r\n      }\r\n   },\r\n   \"currentState\":\"COMPLETED\",\r\n   \"initiatedTimestamp\":\"2021-06-15T13:30:11.470Z\",\r\n   \"quote\":{\r\n      \"request\":{\r\n         \"quoteId\":\"9b25eb78-cda9-4d1f-ad57-ab5fcacf08de\",\r\n         \"transactionId\":\"7b82aa89-3c77-4f19-b586-519522e0f839\",\r\n         \"amountType\":\"SEND\",\r\n         \"amount\":{\r\n            \"currency\":\"USD\",\r\n            \"amount\":\"10\"\r\n         },\r\n         \"expiration\":\"2021-06-15T13:31:11.456Z\",\r\n         \"payer\":{\r\n            \"partyIdInfo\":{\r\n               \"partyIdType\":\"ACCOUNT_ID\",\r\n               \"partyIdentifier\":\"17855501914\",\r\n               \"fspId\":\"payerfsp\"\r\n            },\r\n            \"name\":\"PayerFirst PayerLast\"\r\n         },\r\n         \"payee\":{\r\n            \"partyIdInfo\":{\r\n               \"partyIdType\":\"ACCOUNT_ID\",\r\n               \"partyIdentifier\":\"17039811907\",\r\n               \"fspId\":\"payeefsp\"\r\n            },\r\n            \"personalInfo\":{\r\n               \"complexName\":{\r\n                  \"firstName\":\"SimFirst\",\r\n                  \"middleName\":\"SimMiddle\",\r\n                  \"lastName\":\"SimLast\"\r\n               },\r\n               \"dateOfBirth\":\"2010-10-10\"\r\n            }\r\n         },\r\n         \"transactionType\":{\r\n            \"scenario\":\"TRANSFER\",\r\n            \"initiator\":\"PAYER\",\r\n            \"initiatorType\":\"CONSUMER\"\r\n         },\r\n         \"note\":\"test payment\"\r\n      },\r\n      \"internalRequest\":{\r\n         \"quoteId\":\"9b25eb78-cda9-4d1f-ad57-ab5fcacf08de\",\r\n         \"transactionId\":\"7b82aa89-3c77-4f19-b586-519522e0f839\",\r\n         \"to\":{\r\n            \"idType\":\"ACCOUNT_ID\",\r\n            \"idValue\":\"17039811907\",\r\n            \"fspId\":\"payeefsp\",\r\n            \"dateOfBirth\":\"2010-10-10\",\r\n            \"firstName\":\"SimFirst\",\r\n            \"middleName\":\"SimMiddle\",\r\n            \"lastName\":\"SimLast\"\r\n         },\r\n         \"from\":{\r\n            \"idType\":\"ACCOUNT_ID\",\r\n            \"idValue\":\"222888\",\r\n            \"fspId\":\"payerfsp\",\r\n            \"displayName\":\"PayerFirst PayerLast\"\r\n         },\r\n         \"amountType\":\"SEND\",\r\n         \"amount\":\"10\",\r\n         \"currency\":\"USD\",\r\n         \"transactionType\":\"TRANSFER\",\r\n         \"initiator\":\"PAYER\",\r\n         \"initiatorType\":\"CONSUMER\",\r\n         \"note\":\"test payment\",\r\n         \"expiration\":\"2021-06-15T13:31:11.456Z\"\r\n      },\r\n      \"response\":{\r\n         \"quoteId\":\"9b25eb78-cda9-4d1f-ad57-ab5fcacf08de\",\r\n         \"transactionId\":\"7b82aa89-3c77-4f19-b586-519522e0f839\",\r\n         \"transferAmount\":\"10\",\r\n         \"transferAmountCurrency\":\"USD\",\r\n         \"payeeFspFeeAmount\":\"0\",\r\n         \"payeeFspFeeAmountCurrency\":\"USD\",\r\n         \"payeeFspCommissionAmount\":\"0\",\r\n         \"payeeFspCommissionAmountCurrency\":\"USD\",\r\n         \"expiration\":\"2021-06-15T13:31:11.500Z\"\r\n      },\r\n      \"mojaloopResponse\":{\r\n         \"transferAmount\":{\r\n            \"amount\":\"10\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         \"expiration\":\"2021-06-15T13:31:11.500Z\",\r\n         \"ilpPacket\":\"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3AuYWNjb3VudF9pZC4xNzAzOTgxMTkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNNUlpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU1EaGtaU0lzSW5CaGVXVmxJanA3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGNpSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJFbHVabThpT25zaVkyOXRjR3hsZUU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHRnpkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSjlmU3dpY0dGNVpYSWlPbnNpY0dGeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2lNVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxja1pwY25OMElGQmhlV1Z5VEdGemRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZibFI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVVZTSWl3aWFXNXBkR2xoZEc5eVZIbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA\",\r\n         \"condition\":\"FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ\",\r\n         \"payeeFspFee\":{\r\n            \"amount\":\"0\",\r\n            \"currency\":\"USD\"\r\n         },\r\n         \"payeeFspCommission\":{\r\n            \"amount\":\"0\",\r\n            \"currency\":\"USD\"\r\n         }\r\n      },\r\n      \"fulfilment\":\"ZhrKmchS4bCpaGIcu5fuLOsIFDZqTpJeYf4Q9HOYF0c\"\r\n   },\r\n   \"quoteResponse\":{\r\n      \"headers\":{\r\n         \"content-type\":\"application/vnd.interoperability.quotes+json;version=1.0\",\r\n         \"date\":\"Tue, 15 Jun 2021 13:30:11 GMT\",\r\n         \"fspiop-source\":\"payeefsp\",\r\n         \"fspiop-destination\":\"payerfsp\",\r\n         \"Authorization\":\"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22\",\r\n         \"content-length\":1402\r\n      },\r\n      \"body\":\"{\\\"transferAmount\\\":{\\\"amount\\\":\\\"10\\\",\\\"currency\\\":\\\"USD\\\"},\\\"expiration\\\":\\\"2021-06-15T13:31:11.500Z\\\",\\\"ilpPacket\\\":\\\"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3AuYWNjb3VudF9pZC4xNzAzOTgxMTkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNNUlpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU1EaGtaU0lzSW5CaGVXVmxJanA3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGNpSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJFbHVabThpT25zaVkyOXRjR3hsZUU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHRnpkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSjlmU3dpY0dGNVpYSWlPbnNpY0dGeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2lNVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxja1pwY25OMElGQmhlV1Z5VEdGemRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZibFI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVVZTSWl3aWFXNXBkR2xoZEc5eVZIbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA\\\",\\\"condition\\\":\\\"FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ\\\",\\\"payeeFspFee\\\":{\\\"amount\\\":\\\"0\\\",\\\"currency\\\":\\\"USD\\\"},\\\"payeeFspCommission\\\":{\\\"amount\\\":\\\"0\\\",\\\"currency\\\":\\\"USD\\\"}}\"\r\n   },\r\n   \"prepare\":{\r\n      \"body\":{\r\n         \"transferId\":\"7b82aa89-3c77-4f19-b586-519522e0f839\",\r\n         \"payeeFsp\":\"payeefsp\",\r\n         \"payerFsp\":\"payerfsp\",\r\n         \"amount\":{\r\n            \"currency\":\"USD\",\r\n            \"amount\":\"10000\"\r\n         },\r\n         \"ilpPacket\":\"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3AuYWNjb3VudF9pZC4xNzAzOTgxMTkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNNUlpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU1EaGtaU0lzSW5CaGVXVmxJanA3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGNpSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJFbHVabThpT25zaVkyOXRjR3hsZUU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHRnpkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSjlmU3dpY0dGNVpYSWlPbnNpY0dGeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2lNVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxja1pwY25OMElGQmhlV1Z5VEdGemRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZibFI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVVZTSWl3aWFXNXBkR2xoZEc5eVZIbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA\",\r\n         \"condition\":\"FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ\",\r\n         \"expiration\":\"2021-06-15T13:31:19.879Z\"\r\n      },\r\n      \"headers\":{\r\n         \"content-type\":\"application/vnd.interoperability.transfers+json;version=1.0\",\r\n         \"date\":\"Tue, 15 Jun 2021 13:30:19 GMT\",\r\n         \"fspiop-source\":\"payerfsp\",\r\n         \"fspiop-destination\":\"payeefsp\",\r\n         \"authorization\":\"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22\",\r\n         \"accept\":\"application/vnd.interoperability.transfers+json;version=1\",\r\n         \"content-length\":1391,\r\n         \"host\":\"payeefsp-mojaloop-connector:4000\",\r\n         \"connection\":\"close\"\r\n      }\r\n   },\r\n   \"fulfil\":{\r\n      \"headers\":{\r\n         \"content-type\":\"application/vnd.interoperability.transfers+json;version=1.0\",\r\n         \"date\":\"Tue, 15 Jun 2021 13:30:19 GMT\",\r\n         \"fspiop-source\":\"Wave\",\r\n         \"fspiop-destination\":\"payerfsp\",\r\n         \"Authorization\":\"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22\",\r\n         \"content-length\":135\r\n      },\r\n      \"body\":\"{\\\"completedTimestamp\\\":\\\"2021-06-15T13:30:19.912Z\\\",\\\"transferState\\\":\\\"RESERVED\\\",\\\"fulfilment\\\":\\\"ZhrKmchS4bCpaGIcu5fuLOsIFDZqTpJeYf4Q9HOYF0c\\\"}\"\r\n   },\r\n   \"finalNotification\":{\r\n      \"completedTimestamp\":\"2021-06-15T13:30:19.920Z\",\r\n      \"transferState\":\"COMMITTED\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/transfers/85feac2f-39b2-491b-817e-4a03203d4f14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"transfers",
+						"85feac2f-39b2-491b-817e-4a03203d4f14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CC-LoanDisbursementToWallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"officeId\": 1,\r\n    \"clientId\": 673,\r\n    \"loanId\": 907,\r\n    \"resourceId\": 907,\r\n    \"changes\": {\r\n        \"accountNumber\": \"25611111111\",\r\n        \"bankNumber\": \"demowallet\",\r\n        \"status\": {\r\n            \"id\": 300,\r\n            \"code\": \"loanStatusType.active\",\r\n            \"value\": \"Active\",\r\n            \"pendingApproval\": false,\r\n            \"waitingForDisbursal\": false,\r\n            \"active\": true,\r\n            \"closedObligationsMet\": false,\r\n            \"closedWrittenOff\": false,\r\n            \"closedRescheduled\": false,\r\n            \"closed\": false,\r\n            \"overpaid\": false\r\n        },\r\n        \"locale\": \"en\",\r\n        \"dateFormat\": \"dd MMMM yyyy\",\r\n        \"actualDisbursementDate\": \"29 June 2021\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/loanDisbursementToWallet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"loanDisbursementToWallet"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

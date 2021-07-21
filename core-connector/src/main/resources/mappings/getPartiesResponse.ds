@@ -1,0 +1,10 @@
+
+local loanId= header.mfiCode+header.idValueTrimmed;
+
+{
+    "idType": "ACCOUNT_ID",
+    "idValue": loanId,
+    "firstName": payload.firstname,
+    "lastName": payload.lastname
+
+}

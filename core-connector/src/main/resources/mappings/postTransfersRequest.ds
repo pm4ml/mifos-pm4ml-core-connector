@@ -1,0 +1,12 @@
+
+local paymentTypeId = header.paymentType.paymentTypeId;
+local amount = header.amount;
+local curDate = header.curDate;
+
+{
+    "dateFormat": "dd MMMM yyyy",
+    "locale": "en",
+    "paymentTypeId": paymentTypeId,
+    "transactionAmount": amount,
+    "transactionDate": curDate
+}

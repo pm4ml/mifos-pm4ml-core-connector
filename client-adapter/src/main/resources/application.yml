@@ -1,0 +1,46 @@
+spring:
+  profiles:
+    active: local
+
+server:
+  port: 9091
+  api:
+    listen:
+      host: 0.0.0.0
+      port: 3003
+#      port: 3001 #local testing
+camel:
+  component: jetty
+
+  springboot:
+    main-run-controller: true
+    name: mojaloop-mifos-core-connector
+    stream-caching-enabled: true
+
+thitsaworks:
+  mifos:
+    host: https://dev.thitsa.io/fineract-provider/api
+    username: mfi5Admin
+    password: mfi5password
+
+### IMPORTANT: the below properties are here for development reference purpose
+### for the cluster usage (Helm Chart) it are being set through system variable
+### (java -Dcbs.host=... -Dcbs.username=... -jar core-connector.jar) into Dockerfile
+
+### properties for CBS connection
+#cbs:
+#  host: https://localhost/api
+#  username: user
+#  password: pass
+#  name: CBS CO. LTD.
+#  scope: scope
+#  client-id: id
+#  client-secret: secret
+#  grant-type: type
+#  is-password-encrypted: false
+#  tenant-id: id
+
+### properties for Mojaloop Connector connection
+#ml-conn:
+#  outbound:
+#    host:  http://localhost:4001

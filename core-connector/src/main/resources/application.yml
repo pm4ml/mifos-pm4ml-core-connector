@@ -4,6 +4,8 @@ spring:
 
 server:
   port: 9091
+  metrics:
+    port: 7001
   api:
     listen:
       host: 0.0.0.0
@@ -25,13 +27,6 @@ camel:
 #  host: https://localhost/api
 #  username: user
 #  password: pass
-#  name: DFSP CO. LTD.
-#  scope: scope
-#  client-id: id
-#  client-secret: secret
-#  grant-type: type
-#  is-password-encrypted: false
-#  tenant-id: id
 
 ### properties for Mojaloop Connector connection
 #ml-conn:

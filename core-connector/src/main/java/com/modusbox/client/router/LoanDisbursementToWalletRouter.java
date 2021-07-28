@@ -2,24 +2,44 @@ package com.modusbox.client.router;
 
 import com.modusbox.client.exception.RouteExceptionHandlingConfigurer;
 import com.modusbox.client.processor.*;
+import io.prometheus.client.Counter;
+import io.prometheus.client.Histogram;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 
 public class LoanDisbursementToWalletRouter extends RouteBuilder {
+
+    private static final String TIMER_NAME = "histogram_post_original_disbursement_timer";
+
+    public static final Counter reqCounter = Counter.build()
+            .name("counter_post_original_disbursement_requests_total")
+            .help("Total requests for POST /quoterequests.")
+            .register();
+
+    private static final Histogram reqLatency = Histogram.build()
+            .name("histogram_post_original_disbursement_request_latency")
+            .help("Request latency in seconds for POST /quoterequests.")
+            .register();
 
     private RouteExceptionHandlingConfigurer exceptionHandlingConfigurer = new RouteExceptionHandlingConfigurer();
     private final EncodeAuthHeader encodeAuthHeader = new EncodeAuthHeader();
     private final GetIdPhoneNumberWalletFspFromBody getIdPhoneNumberWalletFspFromBody= new GetIdPhoneNumberWalletFspFromBody();
     private final SetLoanAmountFromBody setLoanAmountFromBody = new SetLoanAmountFromBody();
 
-
     @Override
     public void configure() throws Exception {
 
         exceptionHandlingConfigurer.configureExceptionHandling(this);
+
         // POST /transfers to send the bill payment
-        from("direct:postOriginalDisbursement")
-                .routeId("com.modusbox.postOriginalDisbursement")
+        from("direct:postOriginalDisbursement").routeId("com.modusbox.postOriginalDisbursement").doTry()
+                .process(exchange -> {
+                    reqCounter.inc(1); // increment Prometheus Counter metric
+                    exchange.setProperty(TIMER_NAME, reqLatency.startTimer()); // initiate Prometheus Histogram metric
+                })
+                /*
+                 * BEGIN processing
+                 */
                 .log("Request transfer API called (loan disbursement)")
                 .log("POST /postOriginalDisbursement")
                 .to("bean:customJsonMessage?method=logJsonMessage('info', ${header.X-CorrelationId}, " +
@@ -53,6 +73,12 @@ public class LoanDisbursementToWalletRouter extends RouteBuilder {
                 .log("postOriginalDisbursementResponse,${body}")
                 .setHeader("transferId", simple("${exchangeProperty.postSendMoneyInitial?.get('transferId')}"))
                 .to("direct:putSendMoneyByTransferId")
+                /*
+                 * END processing
+                 */
+                .doFinally().process(exchange -> {
+                    ((Histogram.Timer) exchange.getProperty(TIMER_NAME)).observeDuration(); // stop Prometheus Histogram metric
+                }).end()
         ;
 
         from("direct:getLoanAmountFromId")
@@ -67,8 +93,7 @@ public class LoanDisbursementToWalletRouter extends RouteBuilder {
                 .toD("{{dfsp.host}}/v1/loans/${header.loanId}")
                 .unmarshal().json()
                 .log("Mifos getLoanInfo response,${body}")
-                .process(setLoanAmountFromBody);
-
-
+                .process(setLoanAmountFromBody)
+        ;
     }
 }

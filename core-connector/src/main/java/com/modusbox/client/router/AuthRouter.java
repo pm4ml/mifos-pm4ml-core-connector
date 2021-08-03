@@ -23,12 +23,12 @@ public class AuthRouter extends RouteBuilder {
                                                                     "'Calling Mifos API, getAuthToken', " +
                                                                     "'Tracking the request', 'Track the response', " +
                                                                     "'Request sent to, GET https://{{dfsp.host}}/oauth/token')")
-                .to("https://{{dfsp.host}}/oauth/token?" +
-                        "username={{dfsp.username}}" +
-                        "&password={{dfsp.password}}" +
-                        "&client_id={{dfsp.client_id}}" +
-                        "&grant_type={{dfsp.grant_type}}" +
-                        "&client_secret={{dfsp.client_secret}}")
+//                .to("https://{{dfsp.host}}/oauth/token?" +
+//                        "username={{dfsp.username}}" +
+//                        "&password={{dfsp.password}}" +
+//                        "&client_id={{dfsp.client-id}}" +
+//                        "&grant_type={{dfsp.grant-type}}" +
+//                        "&client_secret={{dfsp.client-secret}}")
                 .unmarshal().json(JsonLibrary.Jackson)
                 .to("bean:customJsonMessage?method=logJsonMessage('info', ${header.X-CorrelationId}, " +
                                                                     "'Response from Mifos API, getAuthToken: Auth Token has been generated', " +

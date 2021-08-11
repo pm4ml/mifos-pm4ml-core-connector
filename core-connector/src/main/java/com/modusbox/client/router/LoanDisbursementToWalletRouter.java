@@ -51,7 +51,9 @@ public class LoanDisbursementToWalletRouter extends RouteBuilder {
                 .to("bean:customJsonMessage?method=logJsonMessage('info', ${header.X-CorrelationId}, " +
                         "'Request received, POST /transfers', " +
                         "null, null, 'Input Payload: ${body}')")
-                .bean("postOriginalDisbursementRequest")
+                .transform(datasonnet("resource:classpath:mappings/postOriginalDisbursementRequest.ds"))
+                .setBody(simple("${body.content}"))
+                .marshal().json()
                 .to("bean:customJsonMessage?method=logJsonMessage('info', ${header.X-CorrelationId}, " +
                         "'Calling outbound API, postTransfers, " +
                         "POST {{ml-conn.outbound.host}}', " +

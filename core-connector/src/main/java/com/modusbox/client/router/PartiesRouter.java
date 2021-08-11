@@ -27,7 +27,7 @@ public class PartiesRouter extends RouteBuilder {
     private final EncodeAuthHeader encodeAuthHeader = new EncodeAuthHeader();
     private final TrimIdValueFromHeader trimIdValueFromHeader = new TrimIdValueFromHeader();
     private final SetClientIdForClientInfo clientIDInfo = new SetClientIdForClientInfo();
-    private RouteExceptionHandlingConfigurer exceptionHandlingConfigurer = new RouteExceptionHandlingConfigurer();
+    private final RouteExceptionHandlingConfigurer exceptionHandlingConfigurer = new RouteExceptionHandlingConfigurer();
 
     public void configure() {
 
@@ -60,7 +60,9 @@ public class PartiesRouter extends RouteBuilder {
                         "'Response from Mifos Clients API, ${body}', " +
                         "'Tracking the clientInfo response', 'Verify the response', null)")
                 // Format the response
-                .bean("getPartiesResponse")
+                .transform(datasonnet("resource:classpath:mappings/getPartiesResponse.ds"))
+                .setBody(simple("${body.content}"))
+                .marshal().json()
                 .to("bean:customJsonMessage?method=logJsonMessage('info', ${header.X-CorrelationId}, " +
                         "'Final getPartiesResponse: ${body}', " +
                         "null, null, 'Response of GET parties/${header.idType}/${header.idValue} API')")
@@ -83,7 +85,9 @@ public class PartiesRouter extends RouteBuilder {
                 .setHeader(Exchange.HTTP_METHOD, constant("GET"))
                 .toD("{{dfsp.host}}/v1/loans/${header.idValueTrimmed}")
                 .log("Mifos getLoanInfo response,${body}")
-                .bean("getLoanInfoResponse")
+                .transform(datasonnet("resource:classpath:mappings/getLoanInfoResponse.ds"))
+                .setBody(simple("${body.content}"))
+                .marshal().json()
                 .process(clientIDInfo)
         ;
 

@@ -24,7 +24,7 @@ public class QuotesRouter extends RouteBuilder {
 
     private final EncodeAuthHeader encodeAuthHeader = new EncodeAuthHeader();
     private final TrimIdValueFromToQuoteRequest trimMFICode = new TrimIdValueFromToQuoteRequest();
-    private RouteExceptionHandlingConfigurer exceptionHandlingConfigurer = new RouteExceptionHandlingConfigurer();
+    private final RouteExceptionHandlingConfigurer exceptionHandlingConfigurer = new RouteExceptionHandlingConfigurer();
 
     public void configure() {
 
@@ -58,7 +58,9 @@ public class QuotesRouter extends RouteBuilder {
                         "'Response from Mifos API, postProcessBillerPayments: ${body}', " +
                         "'Tracking the response', 'Verify the response', null)")
                 .log("Mifos response,${body}")
-                .bean("postQuoterequestsResponse")
+                .transform(datasonnet("resource:classpath:mappings/postQuoterequestsResponse.ds"))
+                .setBody(simple("${body.content}"))
+                .marshal().json()
                 .to("bean:customJsonMessage?method=logJsonMessage('info', ${header.X-CorrelationId}, " +
                         "'Final Response: ${body}', " +
                         "null, null, 'Response of POST /quoterequests API')")

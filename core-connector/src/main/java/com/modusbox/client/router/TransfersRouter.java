@@ -37,8 +37,8 @@ public class TransfersRouter extends RouteBuilder {
     private final TrimIdValueFromToTransferRequestInbound trimMFICode = new TrimIdValueFromToTransferRequestInbound();
     private final SetAmountForPostTransfer setAmountForPostTransfer = new SetAmountForPostTransfer();
     private final SetPaymentTypeName setPaymentTypeName = new SetPaymentTypeName();
-    private RouteExceptionHandlingConfigurer exceptionHandlingConfigurer = new RouteExceptionHandlingConfigurer();
-    private GenerateTimestamp generateTimestamp = new GenerateTimestamp();
+    private final RouteExceptionHandlingConfigurer exceptionHandlingConfigurer = new RouteExceptionHandlingConfigurer();
+    private final GenerateTimestamp generateTimestamp = new GenerateTimestamp();
 
     public void configure() {
 
@@ -87,7 +87,9 @@ public class TransfersRouter extends RouteBuilder {
                 .process(setPaymentTypeName)
                 .to("direct:getAllPaymentTypes")
                 // Prepare request body
-                .bean("postTransfersRequest")
+                .transform(datasonnet("resource:classpath:mappings/postTransfersRequest.ds"))
+                .setBody(simple("${body.content}"))
+                .marshal().json()
                 // Get a valid Authorization header for oAuth
                 //.to("direct:getAuthHeader")
                 //  Set a valid Basic Auth Header and encode it
@@ -104,7 +106,9 @@ public class TransfersRouter extends RouteBuilder {
                         "'Tracking the loan repayment response', 'Verify the response', null)")
                 .log("Mifos response,${body}")
                 // Format the response
-                .bean("postTransfersResponse")
+                .transform(datasonnet("resource:classpath:mappings/postTransfersResponse.ds"))
+                .setBody(simple("${body.content}"))
+                .marshal().json()
                 .log("postTransfersResponse,${body}")
                 /*
                  * END processing
@@ -131,8 +135,8 @@ public class TransfersRouter extends RouteBuilder {
                         "'Response from Mifos API, PaymentTypes: ${body}', " +
                         "'Tracking the payment response', 'Verify the response', null)")
                 // Save response as property to use later
-                .bean("getPaymentTypesResponse")
-                .unmarshal().json()
+                .transform(datasonnet("resource:classpath:mappings/getPaymentTypesResponse.ds"))
+                .setBody(simple("${body.content}"))
                 .setHeader("paymentType", body())
         ;
     }

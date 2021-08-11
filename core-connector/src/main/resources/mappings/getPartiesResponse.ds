@@ -1,10 +1,7 @@
-
-local loanId= header.mfiCode+header.idValueTrimmed;
-
+local loanId = cml.header('mfiCode') + cml.header('idValueTrimmed');
 {
     "idType": "ACCOUNT_ID",
     "idValue": loanId,
     "firstName": payload.firstname,
     "lastName": payload.lastname
-
 }
